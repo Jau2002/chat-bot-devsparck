@@ -1,11 +1,12 @@
 from django.db import models
 from features.models import Feature
-
+from makers.models import Maker
 class Product(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(null=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     features = models.ManyToManyField(Feature, related_name="products")
+    maker = models.ForeignKey(Maker, on_delete=models.CASCADE, null=True, default=None, related_name="products")
     stock = models.PositiveIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
