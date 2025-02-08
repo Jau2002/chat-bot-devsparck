@@ -1,7 +1,6 @@
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework import status
-from users.models import User
 from users.serializers import UserSerializer, UserCreateSerializer
 from users.services import UserService
 from auth.permissions import IsAdmin
@@ -53,4 +52,4 @@ class UserViewSet(viewsets.ModelViewSet):
     def destroy(self, request, *args, **kwargs):
         user = self.get_object()
         UserService.delete_user(user)
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response({"message": "User deleted"},status=status.HTTP_204_NO_CONTENT)
