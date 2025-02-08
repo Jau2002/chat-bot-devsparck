@@ -72,6 +72,17 @@ TEMPLATES = [
     },
 ]
 
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
+        "auth.authentication.JWTAuthentication",  # Agregamos nuestra autenticación JWT
+    ),
+    "DEFAULT_PERMISSION_CLASSES": (
+        "rest_framework.permissions.IsAuthenticated",  # Por defecto, protege las rutas
+    ),
+}
+
 WSGI_APPLICATION = 'chatbot.wsgi.application'
 
 
