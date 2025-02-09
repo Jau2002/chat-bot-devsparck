@@ -20,4 +20,5 @@ urlpatterns = [
     path("api/v1/auth/", include("auth.urls")),
     path("api/v1/users/", include("users.urls")),
     path("api/v1/products/", include("products.urls")),
+    path("api/v1/spark-ai/", include("ai_chats.urls")),
 ]
